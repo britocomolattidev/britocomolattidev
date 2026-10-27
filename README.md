@@ -1,4 +1,4 @@
-<h1 align="center">Nicolas Cruz · britocomolattidev</h1>
+<h1 align="center">Nicolas Brito da Cruz · britocomolattidev</h1>
 
 <p align="center">
   Desenvolvedor na <b>Comolatti</b>
