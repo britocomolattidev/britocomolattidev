@@ -1,7 +1,7 @@
 <h1 align="center">Nicolas Cruz · britocomolattidev</h1>
 
 <p align="center">
-  Desenvolvedor na <b>Comolatti</b> · microsserviços, integrações e automação de processos de negócio
+  Desenvolvedor na <b>Comolatti</b>
 </p>
 
 <p align="center">
