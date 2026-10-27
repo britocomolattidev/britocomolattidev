@@ -37,7 +37,7 @@
   <img src="metrics.svg" alt="Painel de métricas do GitHub" />
 </p>
 
-<sub>Calendário de contribuições, linguagens por volume de código, linhas adicionadas/removidas, hábitos de commit (horários e dias mais produtivos) e conquistas — gerado diariamente pelo GitHub Actions.</sub>
+<sub>Calendário de contribuições, sequências de commits, linguagens por volume de código e linhas adicionadas/removidas — gerado diariamente pelo GitHub Actions.</sub>
 
 ---
 

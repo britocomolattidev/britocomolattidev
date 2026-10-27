@@ -37,22 +37,15 @@ jobs:
           output_action: none
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
+          # habits, achievements e o modo indepth de languages estão quebrados na API atual do GitHub
+          # (push events sem commits e fim do Projects classic); horário e dia mais produtivos vêm do script
           plugin_languages: yes
-          plugin_languages_indepth: yes
-          plugin_languages_details: bytes-size, percentage, lines
+          plugin_languages_details: bytes-size, percentage
           plugin_languages_limit: 8
           plugin_lines: yes
           plugin_lines_history_limit: 1
-          plugin_habits: yes
-          plugin_habits_from: 200
-          plugin_habits_days: 30
-          plugin_habits_facts: yes
-          plugin_habits_charts: yes
           plugin_followup: yes
           plugin_followup_sections: user
-          plugin_achievements: yes
-          plugin_achievements_display: compact
-          plugin_achievements_threshold: C
           repositories_affiliations: owner, organization_member, collaborator
 
       - name: Publicar alterações

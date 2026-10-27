@@ -10,7 +10,7 @@ tmp=$(mktemp)
 gh() { local n; for n in 1 2 3 4; do command gh "$@" && return 0; sleep $((n * 3)); done; return 1; }
 
 gh api -X GET search/commits -f q="author:$USER_LOGIN" -f per_page=100 --paginate \
-  --jq '.items[]|"\(.repository.full_name)\t\(.commit.author.date[:10])\t\(.sha)"' > "$tmp"
+  --jq '.items[]|"\(.repository.full_name)\t\(.commit.author.date[:10])\t\(.sha)\t\(.commit.author.date[11:13])"' > "$tmp"
 
 commits=$(wc -l < "$tmp" | tr -d ' ')
 repos=$(cut -f1 "$tmp" | sort -u | wc -l | tr -d ' ')
@@ -21,8 +21,16 @@ peak_day=$(echo "$peak" | awk '{split($2,d,"-"); print d[3]"/"d[2]"/"d[1]}')
 first_day=$(cut -f2 "$tmp" | sort | head -1)
 days_since=$(( ( $(date +%s) - $(date -d "$first_day" +%s) ) / 86400 + 1 ))
 
+# hábitos: horário e dia da semana com mais commits (a data já vem no fuso local do autor)
+top_hour=$(cut -f4 "$tmp" | sort | uniq -c | sort -rn | head -1 | awk '{print $2}')
+top_hour_count=$(cut -f4 "$tmp" | grep -c "^$top_hour$")
+weekdays=(domingo segunda terça quarta quinta sexta sábado)
+top_wday=$(cut -f2 "$tmp" | while read -r d; do date -d "$d" +%w; done | sort | uniq -c | sort -rn | head -1)
+top_wday_name=${weekdays[$(echo "$top_wday" | awk '{print $2}')]}
+top_wday_count=$(echo "$top_wday" | awk '{print $1}')
+
 add=0; del=0; files=0
-while IFS=$'\t' read -r repo _ sha; do
+while IFS=$'\t' read -r repo _ sha _; do
   read -r a d f < <(gh api "repos/$repo/commits/$sha" --jq '"\(.stats.additions) \(.stats.deletions) \(.files|length)"')
   add=$((add + a)); del=$((del + d)); files=$((files + f))
 done < "$tmp"
@@ -52,6 +60,8 @@ ratio=""
   echo "| 📅 **Dias ativos** | **$active_days de $days_since** |"
   echo "| ⚡ **Média de commits por dia ativo** | **$avg** |"
   echo "| 🔝 **Pico diário** | **$peak_count commits ($peak_day)** |"
+  echo "| 🕘 **Horário mais produtivo** | **${top_hour}h–$(printf '%02d' $(( (10#$top_hour + 1) % 24 )))h ($top_hour_count commits)** |"
+  echo "| 📆 **Dia da semana mais produtivo** | **$top_wday_name ($top_wday_count commits)** |"
   echo "| 🧬 **Linguagens nos projetos** | **$langs** |"
   [ "$orgs" -gt 0 ]    && echo "| 🏢 **Organizações** | **$orgs** |"
   [ "$prs" -gt 0 ]     && echo "| 🔀 **Pull Requests abertos** | **$(fmt "$prs")** |"
