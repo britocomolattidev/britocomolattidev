@@ -1,0 +1,65 @@
+name: Métricas do perfil
+
+on:
+  schedule:
+    - cron: "0 9 * * *" # todo dia às 06:00 BRT
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [".github/workflows/metrics.yml", ".github/scripts/**"]
+
+permissions:
+  contents: write
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Atualizar tabela de números do README
+        env:
+          GH_TOKEN: ${{ secrets.METRICS_TOKEN }}
+          LC_ALL: C.UTF-8
+        run: bash .github/scripts/update-metrics.sh
+
+      - name: Gerar painel de métricas (SVG)
+        uses: lowlighter/metrics@v3.34
+        with:
+          filename: metrics.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: britocomolattidev
+          template: classic
+          # sem "activity" e "repositories": essas seções listam nomes de repositórios privados
+          base: header, community, metadata
+          config_timezone: America/Sao_Paulo
+          config_display: large
+          output_action: none
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
+          plugin_languages: yes
+          plugin_languages_indepth: yes
+          plugin_languages_details: bytes-size, percentage, lines
+          plugin_languages_limit: 8
+          plugin_lines: yes
+          plugin_lines_history_limit: 1
+          plugin_habits: yes
+          plugin_habits_from: 200
+          plugin_habits_days: 30
+          plugin_habits_facts: yes
+          plugin_habits_charts: yes
+          plugin_followup: yes
+          plugin_followup_sections: user
+          plugin_achievements: yes
+          plugin_achievements_display: compact
+          plugin_achievements_threshold: C
+          repositories_affiliations: owner, organization_member, collaborator
+
+      - name: Publicar alterações
+        run: |
+          cp /metrics_renders/metrics.svg metrics.svg 2>/dev/null || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add README.md metrics.svg
+          git diff --cached --quiet || git commit -m "chore: atualiza métricas do perfil"
+          git push
