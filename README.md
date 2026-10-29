@@ -15,20 +15,22 @@
 <!--METRICS:START-->
 | Indicador | Valor |
 | :--- | ---: |
-| 🧱 **Commits** | **102** |
-| 📦 **Repositórios com contribuição** | **4** |
-| ➕ **Linhas adicionadas** | **+172.571** |
-| ➖ **Linhas removidas** | **−871.785** |
-| 🗂️ **Arquivos alterados** | **3.354** |
-| 📅 **Dias ativos** | **6 de 9** |
-| ⚡ **Média de commits por dia ativo** | **17,0** |
+| 🧱 **Commits** | **116** |
+| 📦 **Repositórios com contribuição** | **5** |
+| ➕ **Linhas adicionadas** | **+173.962** |
+| ➖ **Linhas removidas** | **−871.829** |
+| 🗂️ **Arquivos alterados** | **3.384** |
+| 📅 **Dias ativos** | **7 de 10** |
+| ⚡ **Média de commits por dia ativo** | **16,6** |
 | 🔝 **Pico diário** | **40 commits (27/10/2026)** |
-| 🕘 **Horário mais produtivo** | **17h–18h (17 commits)** |
+| 🕘 **Horário mais produtivo** | **17h–18h (18 commits)** |
 | 📆 **Dia da semana mais produtivo** | **terça (56 commits)** |
-| 🧬 **Linguagens nos projetos** | **6** |
+| 🧬 **Linguagens nos projetos** | **8** |
 | 🏢 **Organizações** | **1** |
+| 🔀 **Pull Requests abertos** | **3** |
+| ✅ **Pull Requests mergeados** | **3 (100%)** |
 
-<sub>Atualizado automaticamente em 28/10/2026 06:33 (BRT) · inclui repositórios privados da organização.</sub>
+<sub>Atualizado automaticamente em 29/10/2026 06:36 (BRT) · inclui repositórios privados da organização.</sub>
 <!--METRICS:END-->
 
 ---
