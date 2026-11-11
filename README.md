@@ -20,17 +20,17 @@
 | ➕ **Linhas adicionadas** | **+218.686** |
 | ➖ **Linhas removidas** | **−886.868** |
 | 🗂️ **Arquivos alterados** | **3.980** |
-| 📅 **Dias ativos** | **14 de 22** |
+| 📅 **Dias ativos** | **14 de 23** |
 | ⚡ **Média de commits por dia ativo** | **13,0** |
 | 🔝 **Pico diário** | **40 commits (27/10/2026)** |
 | 🕘 **Horário mais produtivo** | **12h–13h (27 commits)** |
 | 📆 **Dia da semana mais produtivo** | **terça (75 commits)** |
 | 🧬 **Linguagens nos projetos** | **8** |
 | 🏢 **Organizações** | **1** |
-| 🔀 **Pull Requests abertos** | **11** |
-| ✅ **Pull Requests mergeados** | **11 (100%)** |
+| 🔀 **Pull Requests abertos** | **12** |
+| ✅ **Pull Requests mergeados** | **11 (92%)** |
 
-<sub>Atualizado automaticamente em 10/11/2026 06:44 (BRT) · inclui repositórios privados da organização.</sub>
+<sub>Atualizado automaticamente em 11/11/2026 06:46 (BRT) · inclui repositórios privados da organização.</sub>
 <!--METRICS:END-->
 
 ---
